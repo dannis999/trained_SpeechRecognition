@@ -62,9 +62,9 @@ def traverse_wav(fn,glb_fs=16000,sep_sec=16,overlap_sec=1):
         if dn >= n:break
         i += step
 
-def recog_file(fn_wav:str,fn_pinyin:str,sep_sec=16,overlap_sec=1):
+def recog_file(fn_wav:str,fn_pinyin:str,**k):
     with open(fn_pinyin,'w',encoding='utf-8') as f:
-        for wave,fs,sec_start in traverse_wav(fn_wav):
+        for wave,fs,sec_start in traverse_wav(fn_wav,**k):
             dr = ms.recognize_speech(wave[None,:], fs)
             if dr:
                 m,s = divmod(sec_start,60)
