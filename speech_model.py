@@ -1,34 +1,10 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-#
-# Copyright 2016-2099 Ailemon.net
-#
-# This file is part of ASRT Speech Recognition Tool.
-#
-# ASRT is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-# ASRT is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with ASRT.  If not, see <https://www.gnu.org/licenses/>.
-# ============================================================================
-
-"""
-@author: nl8590687
-声学模型基础功能模板定义
-"""
 import os
 import time
 import random
 import numpy as np
 
 from utils.ops import get_edit_distance, read_wav_data
-from utils.config import load_config_file, DEFAULT_CONFIG_FILENAME, load_pinyin_dict
+from utils.config import load_pinyin_dict
 
 class ModelSpeech:
     '''
@@ -227,7 +203,7 @@ class ModelSpeech:
         data_input = data_input.reshape(data_input.shape[0],data_input.shape[1],1)
         r1 = self.predict(data_input)
         # 获取拼音列表
-        list_symbol_dic, _ = load_pinyin_dict(load_config_file(DEFAULT_CONFIG_FILENAME)['dict_filename'])
+        list_symbol_dic, _ = load_pinyin_dict("dict.txt")
 
         r_str=[]
         for i in r1:
