@@ -1,35 +1,22 @@
+此项目用于备份一个完整的中文语音识别环境，包括环境配置和预训练模型，以方便直接使用
+
+- 代码来源：https://github.com/nl8590687/ASRT_SpeechRecognition
+
+环境配置：
+
+```
+virtualenv --python=%appdata%\..\Local\Programs\Python\Python37\python.exe venv37tf2
+cd venv37tf2
+Scripts\activate
+# cd ...
+pip install -r requirements.txt
+```
+
+
+
 # ASRT: A Deep-Learning-Based Chinese Speech Recognition System
+
 ASRT是一个基于深度学习的中文语音识别系统，如果您觉得喜欢，请点一个 **"Star"** 吧~
-
-[![GPL-3.0 Licensed](https://img.shields.io/badge/License-GPL3.0-blue.svg?style=flat)](https://opensource.org/licenses/GPL-3.0) 
-[![TensorFlow Version](https://img.shields.io/badge/Tensorflow-1.15+-blue.svg)](https://www.tensorflow.org/) 
-[![Python Version](https://img.shields.io/badge/Python-3.6+-blue.svg)](https://www.python.org/) 
-
-**ReadMe Language** | 中文版 | [English](https://github.com/nl8590687/ASRT_SpeechRecognition/blob/master/README_EN.md) |
-
-[**ASRT项目主页**](https://asrt.ailemon.net/) | 
-[**发布版下载**](https://asrt.ailemon.net/download) | 
-[**查看本项目的Wiki文档**](https://asrt.ailemon.net/docs/) | 
-[**实用效果体验Demo**](https://asrt.ailemon.net/demo) | 
-[**打赏作者**](https://github.com/nl8590687/ASRT_SpeechRecognition/wiki/donate)
-
-如果程序运行期间或使用中有什么问题，可以及时在issue中提出来，我将尽快做出答复。本项目作者交流QQ群：**894112051**
-
-提问前请仔细查看[项目文档](https://asrt.ailemon.net/docs/)、 
-[常见问题](https://asrt.ailemon.net/docs/issues)
-以及[Issues](https://github.com/nl8590687/ASRT_SpeechRecognition/issues) 避免重复提问
-
-以下问题AI柠檬博主和群友可能会拒绝回答，包括但不限于：
-* 询问已经写在 **ASRT语音识别项目文档** 和 **Issues** 上解决过的已知重复问题。
-* 找不到重点、不知所云的提问内容，但是不给出任何其他信息。
-* 跟ASRT项目没有直接相关的问题
-* “伸手党”类的问题
-
-```
-请注意，开发者并没有义务回复您的问题，也没用义务免费给你打工，您应该具备基本的提问技巧，并善用搜索引擎，
-每个人的时间都是宝贵的。
-```
-有关AI柠檬ASRT语音项目的相关信息亦可使用[AI柠檬站内搜索引擎](https://s.ailemon.net/)进行相关信息的搜索。
 
 ## ASRT相关资料 
 
@@ -225,13 +212,4 @@ $ pip install -r requirements.txt
 
 如果提供的数据集链接无法打开和下载，请点击该链接 [OpenSLR](http://www.openslr.org)
 
-## License 开源许可协议
 
-[GPL v3.0](LICENSE) © [nl8590687](https://github.com/nl8590687) 作者：[AI柠檬](https://www.ailemon.net/)
-
-## Contributors 贡献者们
-
-[@zw76859420](https://github.com/zw76859420) 
-@madeirak @ZJUGuoShuai @williamchenwl
-
-@nl8590687 (repo owner)
