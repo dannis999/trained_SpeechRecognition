@@ -35,16 +35,33 @@ def load_wav(fn,glb_fs=16000):
         x2 = np.linspace(0,1,n2)
         wave = sint.interp1d(x1,wave,kind='cubic')(x2)
     wave = wave.astype(np.short,copy=False)
-    return wave[None,:], glb_fs
+    return wave, glb_fs
+
+def recog_file(fn_wav:str,fn_pinyin:str,sep_sec=16,overlap_sec=1):
+    wave,fs = load_wav(fn_wav)
+    n = len(wave)
+    sep = round(sep_sec * fs)
+    overlap = round(overlap_sec * fs)
+    step = sep - overlap
+    i = 0
+    with open(fn_pinyin,'w',encoding='utf-8') as f:
+        while i < n:
+            dn = min(i+sep,n)
+            dwave = wave[i:dn]
+            dr = ms.recognize_speech(dwave[None,:], fs)
+            sec_start = round(i / fs)
+            i = dn
+            if not dr:continue
+            m,s = divmod(sec_start,60)
+            h,m = divmod(m,60)
+            ts = '{0:02}:{1:02}:{2:02}'.format(h,m,s)
+            ps = ' '.join(dr)
+            f.write(f'[{ts}]{ps}\n')
 
 def main():
-    fn = r"car.wav"
-    wave,fs = load_wav(fn)
-    wave = wave[:,:256000]
-    print(wave.shape,fs)
-    r = ms.recognize_speech(wave, fs)
-    print(r)
+    fn1 = input()
+    fn2 = input()
+    recog_file(fn1,fn2)
 
 if __name__ == '__main__':
     main()
-
