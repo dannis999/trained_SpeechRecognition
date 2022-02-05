@@ -1,8 +1,9 @@
-
+import numpy as np
 from speech_model import ModelSpeech
 from speech_model_zoo import SpeechModel251
 from speech_features import Spectrogram
 from LanguageModel2 import ModelLanguage
+from utils.ops import read_wav_data
 
 AUDIO_LENGTH = 1600
 AUDIO_FEATURE_LENGTH = 200
@@ -29,4 +30,19 @@ def recognize(wavs, fs):
         r=''
         print('[*Message] Server raise a bug. ', ex)
     return r
+
+def load_wav(fn):
+    wave_data, framerate, num_channel, num_sample_width = read_wav_data(fn)
+    if num_channel > 1:
+        wave_data = np.mean(wave_data,axis=1,dtype=wave_data.dtype)
+    return wave_data, framerate
+
+def main():
+    fn = r"D12_903.wav"
+    wave,fs = load_wav(fn)
+    r = recognize(wave,fs)
+    print(r)
+
+if __name__ == '__main__':
+    main()
 
