@@ -3,7 +3,7 @@ import time
 import random
 import numpy as np
 
-from utils.ops import get_edit_distance, read_wav_data
+from utils.ops import get_edit_distance
 from utils.config import load_pinyin_dict
 
 class ModelSpeech:
@@ -210,14 +210,6 @@ class ModelSpeech:
             r_str.append(list_symbol_dic[i])
 
         return r_str
-
-    def recognize_speech_from_file(self, filename):
-        '''
-        最终做语音识别用的函数，识别指定文件名的语音
-        '''
-        wavsignal,sample_rate, _, _ = read_wav_data(filename)
-        r = self.recognize_speech(wavsignal, sample_rate)
-        return r
 
     @property
     def model(self):
