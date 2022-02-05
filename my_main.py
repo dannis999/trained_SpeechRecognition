@@ -1,4 +1,4 @@
-import pydub
+import os,pydub
 import numpy as np
 import scipy.interpolate as sint
 from speech_model import ModelSpeech
@@ -15,7 +15,7 @@ sm251 = SpeechModel251(
     )
 feat = Spectrogram()
 ms = ModelSpeech(sm251, feat, max_label_length=64)
-ms.load_model('save_models/' + sm251.get_model_name() + '.model.h5')
+ms.load_model(os.path.join('save_models','SpeechModel251.model.h5'))
 
 def load_wav(fn,glb_fs=16000):
     _,suf = fn.rsplit('.',1)
@@ -38,7 +38,7 @@ def load_wav(fn,glb_fs=16000):
     return wave[None,:], glb_fs
 
 def main():
-    fn = r"cafe.wav"
+    fn = r"car.wav"
     wave,fs = load_wav(fn)
     wave = wave[:,:256000]
     print(wave.shape,fs)
